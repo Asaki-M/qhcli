@@ -1,45 +1,36 @@
 # qhcli
 
-一个快速创建项目的 CLI 工具
+一个快速创建项目的 CLI 工具。
 
 ## 安装
 
 ```bash
-# 全局安装
 npm install -g qhcli
-
-# 或者使用 npx
-npx qhcli create <project-name>
+# 或
+yarn global add qhcli
+# 或
+pnpm add -g qhcli
 ```
 
-## 使用方法
+## 使用
 
 ```bash
 # 创建新项目
 qhcli create <project-name>
 
-# 查看帮助
-qhcli --help
+# 示例
+qhcli create my-project
 ```
 
-## 功能
+## 功能特性
 
-- 支持创建多种项目模板：
-  - React + TypeScript
-  - Vue + TypeScript
-  - Node.js + TypeScript
+- 支持多种项目模板
+- 自动规范化项目名称
 - 自动初始化 Git 仓库
-- 交互式命令行界面
+## 模板列表
 
-## 开发
+- vite-plugin-easy: 一个简单的 Vite 插件模板
 
-```bash
-# 安装依赖
-npm install
+## 许可证
 
-# 开发模式
-npm run dev
-
-# 构建
-npm run build
-```
+MIT
