@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
+import simpleGit from 'simple-git';
 
 const program = new Command();
 
@@ -81,6 +82,51 @@ function createProject(projectPath: string, templateKey: TemplateKey, projectNam
   }
 }
 
+// 初始化 Git 仓库
+async function initGit(projectPath: string) {
+  try {
+    const git = simpleGit(projectPath);
+    await git.init();
+    await git.add('.');
+    await git.commit('Initial commit');
+    console.log('Git 仓库初始化完成!');
+
+    // 询问是否设置远程仓库
+    const { setRemote } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'setRemote',
+        message: '是否设置远程仓库?',
+        default: false
+      }
+    ]);
+
+    if (setRemote) {
+      const { remoteUrl } = await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'remoteUrl',
+          message: '请输入远程仓库地址:',
+          validate: (input: string) => {
+            if (!input) return '请输入有效的远程仓库地址';
+            return true;
+          }
+        }
+      ]);
+
+      try {
+        await git.addRemote('origin', remoteUrl);
+        // await git.push('origin', 'master');
+        console.log('远程仓库设置完成，可以使用 git push 推送到远程仓库');
+      } catch (error) {
+        console.error('设置远程仓库时出错:', error);
+      }
+    }
+  } catch (error) {
+    console.error('初始化 Git 仓库时出错:', error);
+  }
+}
+
 program
   .command('create')
   .description('Create a new project')
@@ -122,7 +168,7 @@ program
     // 初始化 Git 仓库
     if (answers.useGit) {
       console.log('初始化 Git 仓库...');
-      // 这里可以添加 Git 初始化逻辑
+      await initGit(projectPath);
     }
 
     console.log('项目创建完成!');
