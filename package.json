@@ -1,6 +1,6 @@
 {
   "name": "@qinghuanaa/qhcli",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A CLI tool for quickly creating projects",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -12,7 +12,7 @@
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "bumpp --commit --push --tag",
+    "release": "pnpm build && bumpp --commit --push --tag && npm publish",
     "release:patch": "bumpp --commit --push --tag --patch",
     "release:minor": "bumpp --commit --push --tag --minor",
     "release:major": "bumpp --commit --push --tag --major"
