@@ -21,6 +21,11 @@ const templates = {
     name: 'Vite Plugin Easy',
     description: '一个简单的 Vite 插件模板',
     path: 'vite-plugin-easy'
+  },
+  'node-ts': {
+    name: 'Node TS Template',
+    description: '一个简单的 Node TS 模板',
+    path: 'node-ts'
   }
   // 后续可以在这里添加更多模板
 } as const;
