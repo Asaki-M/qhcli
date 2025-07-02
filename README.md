@@ -31,6 +31,8 @@ qhcli create my-project
 ## 模板列表
 
 - vite-plugin-easy: 一个简单的 Vite 插件模板
+- node-ts: 一个简单的 Node Typescript 项目模板
+- react-ts: 一个简单的 React + Zustand + React Router + Tailwindcss 项目模板
 
 ## 开发
 
