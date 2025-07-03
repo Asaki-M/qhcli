@@ -1,6 +1,6 @@
 # @qinghuanaa/qhcli
 
-一个快速创建项目的 CLI 工具。
+一个快速创建项目的 CLI 工具。:)
 
 ## 安装
 
