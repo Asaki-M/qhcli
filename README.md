@@ -12,6 +12,11 @@ yarn global add @qinghuanaa/qhcli
 pnpm add -g @qinghuanaa/qhcli
 ```
 
+## 不全局安装
+```bash
+npx @qinghuanaa/qhcli create <project-name>
+```
+
 ## 使用
 
 ```bash
